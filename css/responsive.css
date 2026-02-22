@@ -445,8 +445,10 @@
   }
   
   .research-highlights {
+    display: block; /* Fallback */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; /* Fallback */
     gap: var(--spacing-md);
   }
   
@@ -592,8 +594,10 @@
   }
   
   .research-project ul {
+    display: block; /* Fallback */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; /* Fallback */
     gap: var(--spacing-md);
   }
   

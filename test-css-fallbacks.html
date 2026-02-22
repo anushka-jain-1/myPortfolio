@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Fallbacks Test</title>
+  <style>
+    /* Test 1: CSS Custom Properties with Fallbacks */
+    .test-custom-props {
+      color: #2C3E50; /* Fallback */
+      color: var(--color-primary);
+      background-color: #FFFFFF; /* Fallback */
+      background-color: var(--color-background);
+      padding: 1rem; /* Fallback */
+      padding: var(--spacing-sm);
+    }
+    
+    /* Test 2: Grid with Fallback */
+    .test-grid {
+      display: block; /* Fallback */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; /* Fallback */
+      gap: var(--spacing-md);
+    }
+    
+    /* Test 3: Backdrop Filter with Fallback */
+    .test-backdrop {
+      background: rgba(255, 255, 255, 0.95); /* Fallback */
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Test 4: Flexbox (already widely supported, but good to verify) */
+    .test-flex {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .test-item {
+      padding: 1rem;
+      background: #f0f0f0;
+      margin: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Fallbacks Test</h1>
+  
+  <section>
+    <h2>Test 1: CSS Custom Properties</h2>
+    <div class="test-custom-props">
+      This text should have color #2C3E50 (or var(--color-primary) if supported)
+    </div>
+  </section>
+  
+  <section>
+    <h2>Test 2: Grid Layout</h2>
+    <div class="test-grid">
+      <div class="test-item">Item 1</div>
+      <div class="test-item">Item 2</div>
+      <div class="test-item">Item 3</div>
+    </div>
+  </section>
+  
+  <section>
+    <h2>Test 3: Backdrop Filter</h2>
+    <div style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect fill=%22%23ff0000%22 width=%22100%22 height=%22100%22/></svg>'); padding: 2rem;">
+      <div class="test-backdrop" style="padding: 2rem; color: #000;">
+        This should have a blurred backdrop (or solid background fallback)
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <h2>Test 4: Flexbox</h2>
+    <div class="test-flex">
+      <div class="test-item">Flex Item 1</div>
+      <div class="test-item">Flex Item 2</div>
+      <div class="test-item">Flex Item 3</div>
+    </div>
+  </section>
+  
+  <script>
+    // Check browser support
+    console.log('CSS Custom Properties supported:', CSS.supports('color', 'var(--test)'));
+    console.log('CSS Grid supported:', CSS.supports('display', 'grid'));
+    console.log('Backdrop Filter supported:', CSS.supports('backdrop-filter', 'blur(10px)'));
+    console.log('Flexbox supported:', CSS.supports('display', 'flex'));
+  </script>
+</body>
+</html>

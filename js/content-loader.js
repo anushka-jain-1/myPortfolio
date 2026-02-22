@@ -41,7 +41,9 @@ class PortfolioLoader {
             altEmailElement.textContent = data.alternateEmail;
             altEmailElement.href = `mailto:${data.alternateEmail}`;
         }
-        if (profileImage) profileImage.src = data.profileImage;
+        if (profileImage && data.profileImage) {
+            profileImage.src = data.profileImage;
+        }
 
         // Update page title
         document.title = `${data.name} - Portfolio`;
