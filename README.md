@@ -31,96 +31,66 @@ myPortfolio/
 
 ## How to Update Content
 
-All content is contained in `index.html` and can be easily updated by editing the HTML elements. Here's where to find each section:
+This portfolio uses a data-driven architecture. All content is stored in JSON files in the `data/` directory, making it easy to update your portfolio without touching any HTML or JavaScript code.
 
-### 1. About Section
+### Quick Start: Editing Your Portfolio
 
-**Location**: `<section id="about">`
+1. Navigate to the `data/` directory
+2. Open any JSON file in a text editor
+3. Modify the content (see examples below)
+4. Save the file
+5. Refresh your browser to see the changes
 
-Update the following elements:
-- **Profile Image**: Replace `assets/images/profile.jpg` with your photo
-- **Name**: Edit the `<h1 class="name">` element
-- **Title**: Edit the `<p class="title">` element
-- **Bio**: Edit the `<p class="description">` element
+### Available Data Files
 
-```html
-<h1 class="name">Your Name</h1>
-<p class="title">Ph.D. Candidate in Biology (Proteomics)</p>
-<p class="description">Your biographical information here...</p>
+- **`about.json`** - Personal information, bio, and contact details
+- **`research.json`** - Research projects and accomplishments
+- **`skills.json`** - Technical and professional skills by category
+- **`experience.json`** - Work experience and positions
+- **`hobbies.json`** - Personal interests and hobbies
+- **`awards.json`** - Honors, awards, and recognitions
+
+### Example: Adding a Research Project
+
+Open `data/research.json` and add a new project:
+
+```json
+{
+  "projects": [
+    {
+      "title": "New Project Title",
+      "description": "Description of your research project",
+      "highlights": [
+        "Key finding or achievement",
+        "Another important result",
+        "Impact or significance"
+      ]
+    }
+  ]
+}
 ```
 
-### 2. Research Section
+### Example: Updating Your Bio
 
-**Location**: `<section id="research">`
+Open `data/about.json` and edit your information:
 
-Update research projects by editing or duplicating `.research-item` elements:
-
-```html
-<div class="research-item" data-animate>
-  <h3 class="research-title">Your Project Title</h3>
-  <p class="research-description">Project description...</p>
-  <ul class="research-highlights">
-    <li>Key finding 1</li>
-    <li>Key finding 2</li>
-  </ul>
-</div>
+```json
+{
+  "name": "Your Name",
+  "title": "Ph.D. Candidate in Biology (Proteomics)",
+  "email": "your.email@university.edu",
+  "bio": "Your biographical information here..."
+}
 ```
 
-To add more projects, copy the entire `.research-item` div and paste it below.
+### JSON Editing Tips
 
-### 3. Skills Section
+- Use double quotes (") for all strings
+- Add commas between items, but not after the last item
+- Validate your JSON at [jsonlint.com](https://jsonlint.com) if you encounter errors
+- Check the browser console (F12) for error messages
 
-**Location**: `<section id="skills">`
-
-Update skills by editing the `.skill-category` elements:
-
-```html
-<div class="skill-category" data-animate>
-  <h3 class="category-title">Category Name</h3>
-  <ul class="skill-list">
-    <li class="skill-item">Skill 1</li>
-    <li class="skill-item">Skill 2</li>
-  </ul>
-</div>
-```
-
-Add or remove `<li class="skill-item">` elements as needed.
-
-### 4. Work Experience Section
-
-**Location**: `<section id="experience">`
-
-Update work experience by editing `.timeline-item` elements:
-
-```html
-<div class="timeline-item" data-animate>
-  <div class="timeline-marker"></div>
-  <div class="timeline-content">
-    <h3 class="job-title">Position Title</h3>
-    <p class="company">Organization Name</p>
-    <p class="duration">Start Date - End Date</p>
-    <p class="description">Job description...</p>
-  </div>
-</div>
-```
-
-To add more positions, copy the entire `.timeline-item` div.
-
-### 5. Hobbies Section
-
-**Location**: `<section id="hobbies">`
-
-Update hobbies by editing `.hobby-card` elements:
-
-```html
-<div class="hobby-card" data-animate>
-  <div class="hobby-icon">🔬</div>
-  <h3 class="hobby-title">Hobby Name</h3>
-  <p class="hobby-description">Description...</p>
-</div>
-```
-
-Change the emoji in `.hobby-icon` or replace with an image/SVG icon.
+For detailed documentation on each data file's structure, see `data/README.md`.
 
 ## Customizing Design
 
@@ -168,33 +138,171 @@ Adjust spacing scale in `css/variables.css`:
 
 ## Local Development
 
-1. Clone this repository
-2. Open `index.html` in your web browser
-3. Or use a local server:
-   ```bash
-   # Python 3
-   python -m http.server 8000
-   
-   # Node.js (with http-server)
-   npx http-server
-   ```
-4. Navigate to `http://localhost:8000`
+To run the portfolio website locally:
+
+### Option 1: Direct File Opening
+Simply open `index.html` in your web browser by double-clicking the file or dragging it into your browser window.
+
+**Note:** Some features may not work correctly when opening files directly due to browser security restrictions (CORS). Use a local server for full functionality.
+
+### Option 2: Python HTTP Server (Recommended)
+
+If you have Python installed:
+
+```bash
+# Navigate to the myPortfolio directory
+cd myPortfolio
+
+# Python 3
+python -m http.server 8000
+
+# Python 2 (if needed)
+python -m SimpleHTTPServer 8000
+```
+
+Then open your browser and navigate to `http://localhost:8000`
+
+### Option 3: Node.js HTTP Server
+
+If you have Node.js installed:
+
+```bash
+# Navigate to the myPortfolio directory
+cd myPortfolio
+
+# Using npx (no installation required)
+npx http-server
+
+# Or install globally first
+npm install -g http-server
+http-server
+```
+
+Then open your browser and navigate to `http://localhost:8080`
+
+### Option 4: VS Code Live Server
+
+If you use Visual Studio Code:
+
+1. Install the "Live Server" extension
+2. Right-click on `index.html`
+3. Select "Open with Live Server"
+
+### Making Changes
+
+After starting a local server:
+1. Edit JSON files in the `data/` directory
+2. Save your changes
+3. Refresh your browser to see updates
+4. Check the browser console (F12) for any errors
 
 ## Deploying to GitHub Pages
 
-1. Push your code to a GitHub repository
-2. Go to repository Settings → Pages
-3. Under "Source", select the branch (usually `main` or `master`)
-4. Select the root folder `/`
-5. Click "Save"
-6. Your site will be available at `https://yourusername.github.io/repository-name/`
+GitHub Pages provides free hosting for static websites. Follow these steps to deploy your portfolio:
+
+### Initial Setup
+
+1. **Create a GitHub Repository**
+   - Go to [github.com](https://github.com) and sign in
+   - Click the "+" icon in the top right and select "New repository"
+   - Name your repository (e.g., `portfolio` or `username.github.io`)
+   - Choose "Public" visibility
+   - Click "Create repository"
+
+2. **Push Your Code to GitHub**
+   
+   If you haven't initialized Git yet:
+   ```bash
+   cd myPortfolio
+   git init
+   git add .
+   git commit -m "Initial commit: Portfolio website"
+   git branch -M main
+   git remote add origin https://github.com/yourusername/your-repo-name.git
+   git push -u origin main
+   ```
+
+   If you already have a Git repository:
+   ```bash
+   git add .
+   git commit -m "Add portfolio website"
+   git push
+   ```
+
+3. **Enable GitHub Pages**
+   - Go to your repository on GitHub
+   - Click on "Settings" (top navigation bar)
+   - Scroll down and click on "Pages" in the left sidebar
+   - Under "Source", select the branch you want to deploy (usually `main`)
+   - Select the folder: choose `/ (root)` if your `index.html` is in the repository root, or `/myPortfolio` if it's in a subdirectory
+   - Click "Save"
+
+4. **Wait for Deployment**
+   - GitHub will build and deploy your site (usually takes 1-3 minutes)
+   - Once complete, you'll see a message: "Your site is published at https://yourusername.github.io/repository-name/"
+   - Click the link to view your live portfolio
+
+### Custom Domain (Optional)
+
+To use a custom domain like `yourname.com`:
+
+1. Purchase a domain from a domain registrar
+2. In your repository, create a file named `CNAME` in the root directory
+3. Add your custom domain to the file (e.g., `www.yourname.com`)
+4. Configure your domain's DNS settings:
+   - Add a CNAME record pointing to `yourusername.github.io`
+   - Or add A records pointing to GitHub's IP addresses
+5. In GitHub Pages settings, enter your custom domain and save
+
+### Updating Your Published Site
+
+After making changes to your portfolio:
+
+1. **Edit Content**
+   - Update JSON files in the `data/` directory
+   - Test changes locally first
+
+2. **Commit and Push Changes**
+   ```bash
+   git add .
+   git commit -m "Update portfolio content"
+   git push
+   ```
+
+3. **Wait for Deployment**
+   - GitHub Pages automatically rebuilds your site
+   - Changes typically appear within 1-3 minutes
+   - Hard refresh your browser (Ctrl+Shift+R or Cmd+Shift+R) to see updates
+
+### Troubleshooting GitHub Pages
+
+**Site not loading?**
+- Verify that `index.html` is in the correct directory (root or selected folder)
+- Check that the branch and folder settings are correct in Pages settings
+- Wait a few minutes for the initial deployment to complete
+
+**Changes not appearing?**
+- Clear your browser cache or hard refresh (Ctrl+Shift+R)
+- Check the "Actions" tab in your repository to see deployment status
+- Verify your changes were pushed successfully (`git log` to check commits)
+
+**404 errors for assets?**
+- Ensure all file paths are relative (e.g., `data/about.json`, not `/data/about.json`)
+- Check that file names match exactly (case-sensitive on GitHub Pages)
+- Verify all referenced files are committed and pushed to GitHub
+
+**JSON not loading?**
+- Check the browser console (F12) for error messages
+- Validate your JSON syntax at [jsonlint.com](https://jsonlint.com)
+- Ensure JSON files are in the `data/` directory and properly committed
 
 ### Important Notes for GitHub Pages
 
-- Ensure `index.html` is in the root directory
-- All asset paths should be relative (e.g., `assets/images/profile.jpg`)
-- The `.nojekyll` file (if needed) bypasses Jekyll processing
-- Changes may take a few minutes to appear after pushing
+- All files must be committed to your Git repository
+- File paths are case-sensitive (unlike Windows)
+- Changes may take 1-3 minutes to appear after pushing
+- The site URL format is `https://username.github.io/repository-name/`
+- For a user/organization site, name your repo `username.github.io` to get `https://username.github.io/`
 
 ## Browser Support
 
