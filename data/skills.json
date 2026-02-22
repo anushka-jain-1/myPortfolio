@@ -1,0 +1,31 @@
+{
+  "categories": [
+    {
+      "name": "Data Analysis & Programming",
+      "skills": [
+        "Python (pandas, matplotlib)",
+        "Biopython",
+        "Quantitative Data Analysis",
+        "Large-scale Dataset Processing"
+      ]
+    },
+    {
+      "name": "Laboratory & Research Skills",
+      "skills": [
+        "Proteomics",
+        "Single-cell Proteomics",
+        "Experimental Design",
+        "Protein Folding Analysis"
+      ]
+    },
+    {
+      "name": "Analytical Skills",
+      "skills": [
+        "Hypothesis-driven Problem Solving",
+        "End-to-end Project Execution",
+        "Data-driven Evaluation",
+        "Statistical Analysis"
+      ]
+    }
+  ]
+}

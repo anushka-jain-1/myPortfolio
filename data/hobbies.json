@@ -1,0 +1,19 @@
+{
+  "hobbies": [
+    {
+      "icon": "🔬",
+      "name": "Science Communication",
+      "description": "Sharing scientific knowledge with broader audiences through writing, presentations, and mentoring students in research methodologies."
+    },
+    {
+      "icon": "📊",
+      "name": "Data Visualization",
+      "description": "Creating compelling visual representations of complex biological data to communicate research findings effectively."
+    },
+    {
+      "icon": "🌍",
+      "name": "Cultural Events",
+      "description": "Organizing and participating in cultural events, having directed large-scale events with 350+ attendees as Secretary of Rochester Indian Association."
+    }
+  ]
+}

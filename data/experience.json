@@ -1,0 +1,20 @@
+{
+  "positions": [
+    {
+      "title": "Graduate Researcher",
+      "company": "University of Rochester",
+      "location": "Rochester, NY",
+      "startDate": "Aug 2022",
+      "endDate": "Present",
+      "description": "Leading end-to-end research initiatives investigating protein folding dynamics. Developed scalable Python pipelines to analyze 80K+ peptide measurements, improving data processing efficiency. Navigating technical uncertainty in emerging methodologies like single-cell proteomics."
+    },
+    {
+      "title": "Market Research Intern",
+      "company": "National Institute of Science Education and Research",
+      "location": "Bhubaneswar, India",
+      "startDate": "Jun 2019",
+      "endDate": "Aug 2019",
+      "description": "Analyzed Periodic Labor Force Survey (PLFS) data to identify structural and behavioral drivers of female workforce participation. Synthesized findings into actionable policy recommendations aimed at increasing labor force participation."
+    }
+  ]
+}

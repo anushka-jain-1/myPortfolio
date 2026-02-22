@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "title": "Protein Folding Dynamics Investigation",
+      "description": "Leading an end-to-end research initiative investigating protein folding dynamics, from hypothesis generation through preprint dissemination. This work integrates experimental workflows with large-scale quantitative analysis to understand fundamental biological processes.",
+      "highlights": [
+        "First-author manuscript under review with preprint available",
+        "Developed scalable Python pipelines to analyze 80K+ peptide measurements",
+        "Navigated technical uncertainty in emerging methodologies like single-cell proteomics",
+        "Iteratively refined approach based on data-driven evaluation"
+      ]
+    }
+  ]
+}

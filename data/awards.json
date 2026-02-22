@@ -1,0 +1,40 @@
+{
+  "awards": [
+    {
+      "title": "Selected for Oral Presentation",
+      "organization": "Graduate Research Day, University of Rochester",
+      "year": "2024",
+      "description": "Selected to present research findings at the annual Graduate Research Day"
+    },
+    {
+      "title": "Best Poster Award",
+      "organization": "Aging Research Day, University of Rochester",
+      "year": "2024",
+      "description": "Recognized for outstanding poster presentation on aging-related research"
+    },
+    {
+      "title": "Best Poster Award",
+      "organization": "Annual Retreat for Department of Biology, University of Rochester",
+      "year": "2023",
+      "description": "Awarded best poster at the departmental annual retreat"
+    },
+    {
+      "title": "Travel Award Recipient",
+      "organization": "US Human Proteomics Conference (US HUPO)",
+      "year": "2023",
+      "description": "Received travel award to attend and present at US HUPO conference"
+    },
+    {
+      "title": "DST-INSPIRE Fellowship",
+      "organization": "Government of India",
+      "year": "2017-2022",
+      "description": "Five-year national merit-based fellowship awarded by the Department of Science and Technology"
+    },
+    {
+      "title": "National Talent Search Examination (Phase-I Scholar)",
+      "organization": "Government of India",
+      "year": "2015",
+      "description": "National-level scholarship for academic excellence"
+    }
+  ]
+}
