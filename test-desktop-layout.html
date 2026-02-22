@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop Layout Test (≥ 992px)</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Test viewport indicator */
+    body::before {
+      content: 'Desktop Layout Test - Viewport: ' attr(data-viewport);
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: rgba(52, 152, 219, 0.9);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      z-index: 9999;
+    }
+    
+    /* Highlight multi-column layouts */
+    .skills-grid,
+    .hobbies-grid,
+    .awards-grid {
+      outline: 2px dashed rgba(52, 152, 219, 0.3);
+      outline-offset: 5px;
+    }
+    
+    .research-highlights {
+      outline: 2px dashed rgba(231, 76, 60, 0.3);
+      outline-offset: 5px;
+    }
+  </style>
+</head>
+<body data-viewport="≥ 992px">
+  <!-- Navigation Bar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#top" class="nav-link nav-link-home">Home</a>
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#research" class="nav-link">Research</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Work Experience</a>
+      <a href="#awards" class="nav-link">Awards</a>
+      <a href="#hobbies" class="nav-link">Hobbies</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- About Section -->
+    <section id="about" class="content-section">
+      <div class="section-container">
+        <div class="about-content">
+          <div class="profile-image">
+            <img src="assets/images/placeholder.svg" alt="Profile photo">
+          </div>
+          <div class="bio">
+            <h1 class="name">Dr. Jane Smith</h1>
+            <p class="title">Ph.D. Candidate in Biology (Proteomics)</p>
+            <p class="description">
+              Passionate researcher specializing in proteomics and molecular biology. 
+              My work focuses on understanding protein interactions and their role in cellular processes.
+              Desktop layout should show horizontal layout with larger profile image (300px).
+            </p>
+            <div class="contact-info">
+              <p>Email: <a href="mailto:jane@example.com">jane@example.com</a></p>
+              <p>Alternate: <a href="mailto:jane.alt@example.com">jane.alt@example.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Research</h2>
+        <div class="research-content">
+          <div class="research-item">
+            <h3 class="research-title">Protein Interaction Networks</h3>
+            <p class="research-description">
+              Investigating complex protein-protein interactions using advanced mass spectrometry techniques.
+              Desktop layout should show 2-column grid for highlights.
+            </p>
+            <ul class="research-highlights">
+              <li>Mass spectrometry analysis</li>
+              <li>Protein purification techniques</li>
+              <li>Data analysis and visualization</li>
+              <li>Collaborative research projects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Skills (3-Column Grid on Desktop)</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3 class="category-title">Technical Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Mass Spectrometry</li>
+              <li class="skill-item">Protein Purification</li>
+              <li class="skill-item">Western Blotting</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3 class="category-title">Software</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Python</li>
+              <li class="skill-item">R</li>
+              <li class="skill-item">MATLAB</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3 class="category-title">Research</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Experimental Design</li>
+              <li class="skill-item">Data Analysis</li>
+              <li class="skill-item">Scientific Writing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3 class="job-title">Research Assistant</h3>
+              <p class="company">University Lab</p>
+              <p class="duration">2020 - Present</p>
+              <p class="description">
+                Conducting proteomics research and managing laboratory operations.
+                Desktop layout should show enhanced spacing and larger fonts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Awards (3-Column Grid on Desktop)</h2>
+        <div class="awards-grid">
+          <div class="award-item">
+            <h3 class="award-title">Best Research Award</h3>
+            <p class="award-organization">University</p>
+            <p class="award-description">Excellence in proteomics research</p>
+          </div>
+          <div class="award-item">
+            <h3 class="award-title">Graduate Fellowship</h3>
+            <p class="award-organization">Research Foundation</p>
+            <p class="award-description">Funding for doctoral research</p>
+          </div>
+          <div class="award-item">
+            <h3 class="award-title">Conference Presentation</h3>
+            <p class="award-organization">International Conference</p>
+            <p class="award-description">Outstanding poster presentation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Hobbies (3-Column Grid on Desktop)</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">🎨</div>
+            <h3 class="hobby-title">Painting</h3>
+            <p class="hobby-description">
+              Exploring creativity through watercolor and acrylic painting.
+              Desktop cards should have hover effects.
+            </p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">📚</div>
+            <h3 class="hobby-title">Reading</h3>
+            <p class="hobby-description">
+              Enjoying science fiction and non-fiction books about biology.
+            </p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">🏃</div>
+            <h3 class="hobby-title">Running</h3>
+            <p class="hobby-description">
+              Staying active with regular running and outdoor activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Update viewport indicator
+    function updateViewportIndicator() {
+      const width = window.innerWidth;
+      document.body.setAttribute('data-viewport', `${width}px (≥ 992px required)`);
+    }
+    
+    updateViewportIndicator();
+    window.addEventListener('resize', updateViewportIndicator);
+    
+    // Log layout information
+    console.log('Desktop Layout Test');
+    console.log('Viewport width:', window.innerWidth);
+    console.log('Expected features:');
+    console.log('- Horizontal navigation bar with enhanced spacing');
+    console.log('- 3-column grids for Skills, Awards, and Hobbies');
+    console.log('- 2-column grid for Research highlights');
+    console.log('- Enhanced typography and spacing');
+    console.log('- Hover effects on hobby cards');
+  </script>
+</body>
+</html>

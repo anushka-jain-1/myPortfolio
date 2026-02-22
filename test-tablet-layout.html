@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablet Layout Test</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .test-info {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      z-index: 9999;
+    }
+    .test-info.tablet {
+      background: rgba(52, 152, 219, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <!-- Viewport indicator -->
+  <div class="test-info" id="viewportInfo">
+    Viewport: <span id="width"></span>px × <span id="height"></span>px
+    <br>Layout: <span id="layout"></span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#top" class="nav-link nav-link-home">Home</a>
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#research" class="nav-link">Research</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#hobbies" class="nav-link">Hobbies</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- About Section -->
+    <section id="about" class="content-section">
+      <div class="section-container">
+        <div class="about-content">
+          <div class="profile-image">
+            <img src="assets/images/profile.jpg" alt="Profile" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22280%22 height=%22280%22%3E%3Crect fill=%22%23ECF0F1%22 width=%22280%22 height=%22280%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%237F8C8D%22 font-size=%2220%22%3EProfile%3C/text%3E%3C/svg%3E'">
+          </div>
+          <div class="bio">
+            <h1 class="name">Test User</h1>
+            <p class="title">Ph.D. Candidate in Biology (Proteomics)</p>
+            <p class="description">This is a test page to verify the tablet layout (768px - 991px) is working correctly. Resize your browser window to see the responsive behavior.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3 class="category-title">Technical Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Skill 1</li>
+              <li class="skill-item">Skill 2</li>
+              <li class="skill-item">Skill 3</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h3 class="category-title">Laboratory Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Skill 4</li>
+              <li class="skill-item">Skill 5</li>
+              <li class="skill-item">Skill 6</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="content-section">
+      <div class="section-container">
+        <h2 class="section-title">Hobbies</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">🎨</div>
+            <h3 class="hobby-title">Hobby 1</h3>
+            <p class="hobby-description">Test hobby description</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">📚</div>
+            <h3 class="hobby-title">Hobby 2</h3>
+            <p class="hobby-description">Test hobby description</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function updateViewportInfo() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const info = document.getElementById('viewportInfo');
+      
+      document.getElementById('width').textContent = width;
+      document.getElementById('height').textContent = height;
+      
+      let layout = 'Mobile';
+      if (width >= 1200) {
+        layout = 'Large Desktop';
+      } else if (width >= 992) {
+        layout = 'Desktop';
+      } else if (width >= 768) {
+        layout = 'Tablet (768-991px)';
+        info.classList.add('tablet');
+      } else {
+        layout = 'Mobile';
+        info.classList.remove('tablet');
+      }
+      
+      if (width < 768 || width >= 992) {
+        info.classList.remove('tablet');
+      }
+      
+      document.getElementById('layout').textContent = layout;
+    }
+    
+    updateViewportInfo();
+    window.addEventListener('resize', updateViewportInfo);
+  </script>
+</body>
+</html>
