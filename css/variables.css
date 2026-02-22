@@ -21,6 +21,8 @@
   --spacing-xl: 6rem;      /* 96px */
   
   /* Typography (max 2 font families as per requirements) */
+  /* Using system font stacks for optimal performance - no web font loading required */
+  /* If using @font-face in the future, add font-display: swap for better performance */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-secondary: 'Playfair Display', Georgia, serif;
   
