@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Test</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Add some height to sections for testing scroll */
+    .content-section {
+      min-height: 100vh;
+      border: 2px solid #ccc;
+      margin: 10px;
+      padding: 20px;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#top" class="nav-link nav-link-home" data-nav-target="top" aria-label="Return to top">Home</a>
+      <a href="#about" class="nav-link active" data-nav-target="about">About</a>
+      <a href="#research" class="nav-link" data-nav-target="research">Research</a>
+      <a href="#skills" class="nav-link" data-nav-target="skills">Skills</a>
+      <a href="#missing" class="nav-link" data-nav-target="missing">Missing Section (Test)</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section id="about" class="content-section" data-section="about">
+      <h2>About Section</h2>
+      <p>This is the about section. Scroll down to test navigation.</p>
+    </section>
+
+    <section id="research" class="content-section" data-section="research">
+      <h2>Research Section</h2>
+      <p>This is the research section.</p>
+    </section>
+
+    <section id="skills" class="content-section" data-section="skills">
+      <h2>Skills Section</h2>
+      <p>This is the skills section.</p>
+    </section>
+  </main>
+
+  <script src="js/navigation.js"></script>
+  
+  <script>
+    // Test script to verify NavigationController functionality
+    console.log('Navigation test page loaded');
+    console.log('Test cases:');
+    console.log('1. Click "Home" button - should scroll to top (y=0)');
+    console.log('2. Click "About" link - should scroll to About section');
+    console.log('3. Click "Research" link - should scroll to Research section');
+    console.log('4. Click "Skills" link - should scroll to Skills section');
+    console.log('5. Click "Missing Section" link - should log warning and not scroll');
+    console.log('6. Scroll through sections - active link should update automatically');
+    
+    // Monitor active link changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          const target = mutation.target;
+          if (target.classList.contains('active')) {
+            console.log('Active link changed to:', target.textContent);
+          }
+        }
+      });
+    });
+    
+    // Observe all nav links for class changes
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        observer.observe(link, { attributes: true });
+      });
+    });
+  </script>
+</body>
+</html>
