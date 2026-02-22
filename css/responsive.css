@@ -1,0 +1,220 @@
+/* Responsive Design - Mobile First Approach */
+
+/* Mobile Styles (Default - < 768px) */
+/* Base styles in styles.css are mobile-first */
+
+/* Small Devices (576px and up) */
+@media (min-width: 576px) {
+  .section-container {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* Tablets (768px and up) */
+@media (min-width: 768px) {
+  /* Typography adjustments */
+  h1 {
+    font-size: 3.5rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  /* Navigation */
+  .nav-container {
+    justify-content: space-between;
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-md);
+  }
+  
+  /* About Section */
+  .about-content {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--spacing-xl);
+  }
+  
+  .profile-image {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+  }
+  
+  /* Skills Grid */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Hobbies Grid */
+  .hobbies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Section Padding */
+  .content-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}
+
+/* Desktops (992px and up) */
+@media (min-width: 992px) {
+  /* Typography */
+  h1 {
+    font-size: 4rem;
+  }
+  
+  /* Navigation */
+  .nav-container {
+    gap: var(--spacing-lg);
+  }
+  
+  /* About Section */
+  .profile-image {
+    width: 300px;
+    height: 300px;
+  }
+  
+  /* Skills Grid */
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Hobbies Grid */
+  .hobbies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Research Section */
+  .research-content {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Timeline */
+  .timeline {
+    padding-left: var(--spacing-xl);
+  }
+}
+
+/* Large Desktops (1200px and up) */
+@media (min-width: 1200px) {
+  /* Section Padding */
+  .content-section {
+    padding: var(--spacing-xl) var(--spacing-xl);
+  }
+  
+  /* About Section */
+  .bio {
+    max-width: 800px;
+  }
+}
+
+/* Mobile Navigation (< 768px) */
+@media (max-width: 767px) {
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+  
+  .nav-link {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs);
+  }
+  
+  .navbar {
+    height: auto;
+    min-height: var(--nav-height);
+  }
+  
+  main {
+    margin-top: calc(var(--nav-height) + var(--spacing-sm));
+  }
+  
+  /* Adjust section padding for mobile */
+  .content-section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    min-height: auto;
+  }
+  
+  /* Timeline adjustments */
+  .timeline {
+    padding-left: var(--spacing-md);
+  }
+  
+  .timeline-marker {
+    left: calc(-1 * var(--spacing-md) - 6px);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar {
+    position: static;
+    box-shadow: none;
+  }
+  
+  .content-section {
+    min-height: auto;
+    page-break-inside: avoid;
+  }
+  
+  [data-animate] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #000000;
+    --color-secondary: #0000FF;
+    --color-accent: #FF0000;
+    --color-background: #FFFFFF;
+    --color-text: #000000;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #E8E8E8;
+    --color-secondary: #5DADE2;
+    --color-accent: #EC7063;
+    --color-background: #1A1A1A;
+    --color-text: #E8E8E8;
+    --color-text-light: #B0B0B0;
+    --color-border: #333333;
+    --color-nav-bg: rgba(26, 26, 26, 0.95);
+  }
+  
+  .content-section:nth-child(even) {
+    background-color: #222222;
+  }
+  
+  .research-item,
+  .skill-category,
+  .timeline-content,
+  .hobby-card {
+    background-color: #2A2A2A;
+  }
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio website for a Ph.D. biology student specializing in proteomics research">
+  <meta name="author" content="Ph.D. Biology Student">
+  <meta name="keywords" content="proteomics, biology, research, Ph.D., portfolio">
+  <title>Ph.D. Portfolio - Proteomics Research</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#top" class="nav-link nav-link-home" data-nav-target="top" aria-label="Return to top">Home</a>
+      <a href="#about" class="nav-link active" data-nav-target="about">About</a>
+      <a href="#research" class="nav-link" data-nav-target="research">Research</a>
+      <a href="#skills" class="nav-link" data-nav-target="skills">Skills</a>
+      <a href="#experience" class="nav-link" data-nav-target="experience">Work Experience</a>
+      <a href="#hobbies" class="nav-link" data-nav-target="hobbies">Hobbies</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="top">
+    <!-- About Section -->
+    <section id="about" class="content-section" data-section="about">
+      <div class="section-container">
+        <div class="about-content">
+          <div class="profile-image">
+            <img src="assets/images/profile.jpg" alt="Profile photo" onerror="this.src='assets/images/placeholder.svg'">
+          </div>
+          <div class="bio">
+            <h1 class="name">Your Name</h1>
+            <p class="title">Ph.D. Candidate in Biology (Proteomics)</p>
+            <p class="description">
+              Add your biographical information here. Describe your academic background, 
+              research interests, and what drives your passion for proteomics research.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="content-section" data-section="research">
+      <div class="section-container">
+        <h2 class="section-title">Research</h2>
+        <div class="research-content">
+          <div class="research-item" data-animate>
+            <h3 class="research-title">Research Project Title</h3>
+            <p class="research-description">
+              Describe your proteomics research project here. Include the main objectives,
+              methodologies, and significance of your work.
+            </p>
+            <ul class="research-highlights">
+              <li>Key finding or methodology 1</li>
+              <li>Key finding or methodology 2</li>
+              <li>Key finding or methodology 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="content-section" data-section="skills">
+      <div class="section-container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category" data-animate>
+            <h3 class="category-title">Technical Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Mass Spectrometry</li>
+              <li class="skill-item">Protein Analysis</li>
+              <li class="skill-item">Data Analysis</li>
+            </ul>
+          </div>
+          <div class="skill-category" data-animate>
+            <h3 class="category-title">Laboratory Skills</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Sample Preparation</li>
+              <li class="skill-item">Chromatography</li>
+              <li class="skill-item">Western Blotting</li>
+            </ul>
+          </div>
+          <div class="skill-category" data-animate>
+            <h3 class="category-title">Software & Tools</h3>
+            <ul class="skill-list">
+              <li class="skill-item">R / Python</li>
+              <li class="skill-item">Proteomics Software</li>
+              <li class="skill-item">Statistical Analysis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="content-section" data-section="experience">
+      <div class="section-container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item" data-animate>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3 class="job-title">Research Assistant</h3>
+              <p class="company">University Name / Lab Name</p>
+              <p class="duration">Start Date - End Date</p>
+              <p class="description">
+                Describe your responsibilities and achievements in this role.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item" data-animate>
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h3 class="job-title">Previous Position</h3>
+              <p class="company">Organization Name</p>
+              <p class="duration">Start Date - End Date</p>
+              <p class="description">
+                Describe your responsibilities and achievements in this role.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="content-section" data-section="hobbies">
+      <div class="section-container">
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card" data-animate>
+            <div class="hobby-icon">🔬</div>
+            <h3 class="hobby-title">Science Communication</h3>
+            <p class="hobby-description">
+              Sharing scientific knowledge with broader audiences through writing and presentations.
+            </p>
+          </div>
+          <div class="hobby-card" data-animate>
+            <div class="hobby-icon">📚</div>
+            <h3 class="hobby-title">Reading</h3>
+            <p class="hobby-description">
+              Exploring scientific literature and staying current with research developments.
+            </p>
+          </div>
+          <div class="hobby-card" data-animate>
+            <div class="hobby-icon">🎨</div>
+            <h3 class="hobby-title">Creative Hobby</h3>
+            <p class="hobby-description">
+              Add your personal interests and hobbies here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- No JavaScript Fallback -->
+  <noscript>
+    <div class="noscript-warning">
+      For the best experience, please enable JavaScript in your browser.
+    </div>
+  </noscript>
+
+  <!-- JavaScript -->
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
