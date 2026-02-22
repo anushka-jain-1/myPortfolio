@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Controller Test</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    
+    .test-section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #ccc;
+      margin-bottom: 20px;
+    }
+    
+    /* Animation styles from styles.css */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    [data-animate].animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .test-box {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+    
+    .status {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="status">Scroll down to test animations</div>
+  
+  <div class="test-section">
+    <div class="test-box" data-animate>Box 1</div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-box" data-animate>Box 2</div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-box" data-animate>Box 3</div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-box" data-animate>Box 4</div>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-box" data-animate>Box 5</div>
+  </div>
+  
+  <script src="js/animations.js"></script>
+  
+  <script>
+    // Log when animations are triggered
+    document.addEventListener('DOMContentLoaded', () => {
+      const boxes = document.querySelectorAll('[data-animate]');
+      boxes.forEach((box, index) => {
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+              if (box.classList.contains('animated')) {
+                console.log(`✓ Box ${index + 1} animated!`);
+              }
+            }
+          });
+        });
+        
+        observer.observe(box, { attributes: true });
+      });
+      
+      console.log('Animation test page loaded. Scroll down to see animations trigger.');
+    });
+  </script>
+</body>
+</html>

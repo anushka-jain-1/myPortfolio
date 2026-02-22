@@ -42,6 +42,12 @@ class NavigationController {
    * Updates active link based on which section is in viewport
    */
   setupIntersectionObserver() {
+    // Check if Intersection Observer is supported
+    if (!('IntersectionObserver' in window)) {
+      console.warn('NavigationController: Intersection Observer not supported, skipping observer setup');
+      return;
+    }
+    
     // Configure observer with appropriate threshold and rootMargin
     const observerOptions = {
       threshold: 0.5, // Section must be 50% visible
@@ -114,10 +120,100 @@ class NavigationController {
   }
 }
 
-// Initialize NavigationController when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    const navigationController = new NavigationController(navbar);
+// NavigationController will be initialized by main.js
+
+/**
+ * ScrollManager
+ * Handles scroll-based section visibility detection and smooth scrolling
+ * Validates: Requirements 2.1, 2.2, 2.3
+ */
+class ScrollManager {
+  constructor() {
+    this.sections = document.querySelectorAll('.content-section');
+    this.observer = null;
+    this.activeSection = null;
+    this.init();
   }
-});
+  
+  /**
+   * Initialize the ScrollManager
+   * Sets up Intersection Observer for section visibility detection
+   */
+  init() {
+    // Check if Intersection Observer is supported
+    if (!('IntersectionObserver' in window)) {
+      console.warn('ScrollManager: Intersection Observer not supported, skipping initialization');
+      return;
+    }
+    
+    // Set up Intersection Observer with appropriate configuration
+    this.observer = new IntersectionObserver(
+      this.handleIntersection.bind(this),
+      {
+        threshold: 0.5, // Section must be 50% visible to be considered active
+        rootMargin: '-100px 0px' // Account for fixed navbar height
+      }
+    );
+    
+    // Observe all content sections
+    this.sections.forEach(section => {
+      this.observer.observe(section);
+    });
+  }
+  
+  /**
+   * Handle intersection events from the Intersection Observer
+   * Updates active section when a section becomes visible
+   * @param {IntersectionObserverEntry[]} entries - Array of intersection entries
+   */
+  handleIntersection(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Update active section
+        this.activeSection = entry.target;
+        
+        // Dispatch custom event for other components to listen to
+        const sectionId = entry.target.getAttribute('id');
+        document.dispatchEvent(new CustomEvent('sectionVisible', {
+          detail: { sectionId: sectionId }
+        }));
+      }
+    });
+  }
+  
+  /**
+   * Programmatically scroll to a target element with smooth behavior
+   * @param {HTMLElement} target - The target element to scroll to
+   */
+  smoothScrollTo(target) {
+    if (!target) {
+      console.warn('ScrollManager: Target element not found');
+      return;
+    }
+    
+    // Smooth scroll to target element
+    target.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  }
+  
+  /**
+   * Get the currently active section
+   * @returns {HTMLElement|null} The currently active section element
+   */
+  getActiveSection() {
+    return this.activeSection;
+  }
+  
+  /**
+   * Disconnect the observer (cleanup)
+   */
+  destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+}
+
+// ScrollManager will be initialized by main.js

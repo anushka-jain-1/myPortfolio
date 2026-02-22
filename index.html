@@ -33,10 +33,10 @@
     <section id="about" class="content-section" data-section="about">
       <div class="section-container">
         <div class="about-content">
-          <div class="profile-image">
+          <div class="profile-image" data-animate>
             <img id="profile-image" src="assets/images/profile.jpg" alt="Profile photo" onerror="this.src='assets/images/placeholder.svg'">
           </div>
-          <div class="bio">
+          <div class="bio" data-animate>
             <h1 class="name" id="profile-name">Loading...</h1>
             <p class="title" id="profile-title">Loading...</p>
             <p class="description" id="profile-bio">
@@ -54,8 +54,8 @@
     <!-- Research Section -->
     <section id="research" class="content-section" data-section="research">
       <div class="section-container">
-        <h2 class="section-title">Research</h2>
-        <div class="research-content" id="research-projects">
+        <h2 class="section-title" data-animate>Research</h2>
+        <div class="research-content" id="research-projects" data-animate>
           <!-- Research projects will be loaded dynamically from data/research.json -->
           <p>Loading research projects...</p>
         </div>
@@ -65,8 +65,8 @@
     <!-- Skills Section -->
     <section id="skills" class="content-section" data-section="skills">
       <div class="section-container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-grid" id="skills-container">
+        <h2 class="section-title" data-animate>Skills</h2>
+        <div class="skills-grid" id="skills-container" data-animate>
           <!-- Skills will be loaded dynamically from data/skills.json -->
           <p>Loading skills...</p>
         </div>
@@ -76,8 +76,8 @@
     <!-- Work Experience Section -->
     <section id="experience" class="content-section" data-section="experience">
       <div class="section-container">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="timeline" id="experience-container">
+        <h2 class="section-title" data-animate>Work Experience</h2>
+        <div class="timeline" id="experience-container" data-animate>
           <!-- Experience will be loaded dynamically from data/experience.json -->
           <p>Loading work experience...</p>
         </div>
@@ -87,8 +87,8 @@
     <!-- Honors and Awards Section -->
     <section id="awards" class="content-section" data-section="awards">
       <div class="section-container">
-        <h2 class="section-title">Honors & Awards</h2>
-        <div id="awards-container" class="awards-grid">
+        <h2 class="section-title" data-animate>Honors & Awards</h2>
+        <div id="awards-container" class="awards-grid" data-animate>
           <!-- Awards will be loaded dynamically -->
         </div>
       </div>
@@ -97,8 +97,8 @@
     <!-- Hobbies Section -->
     <section id="hobbies" class="content-section" data-section="hobbies">
       <div class="section-container">
-        <h2 class="section-title">Hobbies & Interests</h2>
-        <div class="hobbies-grid" id="hobbies-container">
+        <h2 class="section-title" data-animate>Hobbies & Interests</h2>
+        <div class="hobbies-grid" id="hobbies-container" data-animate>
           <!-- Hobbies will be loaded dynamically from data/hobbies.json -->
           <p>Loading hobbies...</p>
         </div>
@@ -114,8 +114,11 @@
   </noscript>
 
   <!-- JavaScript -->
-  <script src="js/content-loader.js"></script>
+  <!-- Load component classes first -->
   <script src="js/navigation.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/content-loader.js"></script>
+  <!-- Load main initialization script last -->
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Initialization Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .pass { background-color: #d4edda; border-color: #c3e6cb; }
+    .fail { background-color: #f8d7da; border-color: #f5c6cb; }
+    .pending { background-color: #fff3cd; border-color: #ffeaa7; }
+    h2 { margin-top: 0; }
+    pre {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 3px;
+      overflow-x: auto;
+    }
+    #console-output {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Initialization Test</h1>
+  
+  <div class="test-section pending" id="test-dom">
+    <h2>Test 1: DOM Elements Present</h2>
+    <p id="test-dom-result">Checking...</p>
+  </div>
+  
+  <div class="test-section pending" id="test-intersection">
+    <h2>Test 2: Intersection Observer Support</h2>
+    <p id="test-intersection-result">Checking...</p>
+  </div>
+  
+  <div class="test-section pending" id="test-classes">
+    <h2>Test 3: JavaScript Classes Loaded</h2>
+    <p id="test-classes-result">Checking...</p>
+  </div>
+  
+  <div class="test-section pending" id="test-init">
+    <h2>Test 4: Components Initialized</h2>
+    <p id="test-init-result">Checking...</p>
+  </div>
+  
+  <div class="test-section" id="console-section">
+    <h2>Console Output</h2>
+    <pre id="console-output"></pre>
+  </div>
+  
+  <!-- Mock DOM structure for testing -->
+  <nav class="navbar" style="display: none;">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#research" class="nav-link">Research</a>
+  </nav>
+  
+  <section id="about" class="content-section" style="display: none;">
+    <h2>About</h2>
+  </section>
+  
+  <section id="research" class="content-section" style="display: none;">
+    <h2>Research</h2>
+  </section>
+  
+  <div data-animate style="display: none;">Test Animation</div>
+  
+  <!-- Load JavaScript files -->
+  <script>
+    // Capture console output
+    const consoleOutput = document.getElementById('console-output');
+    const originalLog = console.log;
+    const originalInfo = console.info;
+    const originalWarn = console.warn;
+    const originalError = console.error;
+    
+    function captureConsole(level, ...args) {
+      const message = args.map(arg => 
+        typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
+      ).join(' ');
+      consoleOutput.textContent += `[${level}] ${message}\n`;
+    }
+    
+    console.log = (...args) => { originalLog(...args); captureConsole('LOG', ...args); };
+    console.info = (...args) => { originalInfo(...args); captureConsole('INFO', ...args); };
+    console.warn = (...args) => { originalWarn(...args); captureConsole('WARN', ...args); };
+    console.error = (...args) => { originalError(...args); captureConsole('ERROR', ...args); };
+  </script>
+  
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Run tests after a short delay to allow initialization
+    setTimeout(() => {
+      runTests();
+    }, 500);
+    
+    function runTests() {
+      // Test 1: DOM Elements Present
+      const navbar = document.querySelector('.navbar');
+      const sections = document.querySelectorAll('.content-section');
+      const animatedElements = document.querySelectorAll('[data-animate]');
+      
+      if (navbar && sections.length > 0 && animatedElements.length > 0) {
+        setTestResult('test-dom', 'pass', 
+          `✓ Found navbar, ${sections.length} sections, and ${animatedElements.length} animated elements`);
+      } else {
+        setTestResult('test-dom', 'fail', 
+          `✗ Missing elements: navbar=${!!navbar}, sections=${sections.length}, animated=${animatedElements.length}`);
+      }
+      
+      // Test 2: Intersection Observer Support
+      const hasIntersectionObserver = 'IntersectionObserver' in window;
+      if (hasIntersectionObserver) {
+        setTestResult('test-intersection', 'pass', 
+          '✓ Intersection Observer is supported');
+      } else {
+        setTestResult('test-intersection', 'pass', 
+          '⚠ Intersection Observer not supported (fallback mode expected)');
+      }
+      
+      // Test 3: JavaScript Classes Loaded
+      const hasNavigationController = typeof NavigationController !== 'undefined';
+      const hasScrollManager = typeof ScrollManager !== 'undefined';
+      const hasAnimationController = typeof AnimationController !== 'undefined';
+      
+      if (hasNavigationController && hasScrollManager && hasAnimationController) {
+        setTestResult('test-classes', 'pass', 
+          '✓ All JavaScript classes loaded: NavigationController, ScrollManager, AnimationController');
+      } else {
+        setTestResult('test-classes', 'fail', 
+          `✗ Missing classes: NavigationController=${hasNavigationController}, ScrollManager=${hasScrollManager}, AnimationController=${hasAnimationController}`);
+      }
+      
+      // Test 4: Check console output for initialization messages
+      const consoleText = consoleOutput.textContent;
+      const hasInitMessage = consoleText.includes('initialized successfully') || 
+                            consoleText.includes('Initializing with');
+      const hasErrors = consoleText.includes('[ERROR]');
+      
+      if (hasInitMessage && !hasErrors) {
+        setTestResult('test-init', 'pass', 
+          '✓ Components initialized without errors');
+      } else if (hasErrors) {
+        setTestResult('test-init', 'fail', 
+          '✗ Initialization completed with errors (see console output below)');
+      } else {
+        setTestResult('test-init', 'fail', 
+          '✗ No initialization messages found');
+      }
+    }
+    
+    function setTestResult(testId, status, message) {
+      const testDiv = document.getElementById(testId);
+      const resultP = document.getElementById(testId + '-result');
+      
+      testDiv.className = 'test-section ' + status;
+      resultP.textContent = message;
+    }
+  </script>
+</body>
+</html>
